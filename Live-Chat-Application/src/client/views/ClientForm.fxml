@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="600.0" prefWidth="900.0" stylesheets="@../resources/css/Styles.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.controllers.ClientFormController">
+    <children>
+        <HBox fx:id="menuBar" minHeight="41.0" minWidth="900.0" prefHeight="41.0" prefWidth="900.0" styleClass="themeColor">
+            <children>
+                <ImageView fx:id="logo" fitHeight="41.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true" />
+                <Label fx:id="nameLabel" style="-fx-background-color: transparent;" styleClass="themeLabel" text="Name" textFill="WHITE">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                    <HBox.margin>
+                        <Insets left="20.0" top="7.0" />
+                    </HBox.margin>
+                </Label>
+            </children>
+        </HBox>
+        <SplitPane fx:id="splitPane" dividerPositions="0.22160356347438753" focusTraversable="true" VBox.vgrow="ALWAYS">
+            <items>
+                <AnchorPane>
+                    <children>
+                        <ListView fx:id="listViewStatus" prefHeight="509.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                    </children>
+                </AnchorPane>
+                <VBox prefHeight="200.0" prefWidth="100.0">
+                    <children>
+                        <ListView fx:id="listView" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+                        <HBox minWidth="24.0" prefHeight="24.0" prefWidth="700.0">
+                            <children>
+                                <JFXTextField fx:id="textField" focusColor="WHITE" focusTraversable="false" promptText="Type a message" unFocusColor="BLACK" HBox.hgrow="ALWAYS">
+                                    <styleClass>
+                                        <String fx:value="themeColor" />
+                                        <String fx:value="themeLabel" />
+                                    </styleClass>
+                                    <font>
+                                        <Font size="17.0" />
+                                    </font>
+                                </JFXTextField>
+                                <JFXButton fx:id="buttonSend" buttonType="RAISED" onAction="#pressedSend" prefHeight="37.0" prefWidth="130.0" ripplerFill="#2c2b2b" styleClass="themeColor" text="Send" textFill="WHITE">
+                                    <font>
+                                        <Font name="System Bold" size="15.0" />
+                                    </font>
+                                </JFXButton>
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+            </items>
+        </SplitPane>
+        <HBox id="HBox" alignment="CENTER_LEFT" spacing="5.0" VBox.vgrow="NEVER">
+            <children>
+                <Label maxHeight="1.7976931348623157E308" text="Connected" HBox.hgrow="ALWAYS">
+                    <font>
+                        <Font size="11.0" fx:id="x3" />
+                    </font>
+                    <textFill>
+                        <Color blue="0.625" green="0.625" red="0.625" fx:id="x4" />
+                    </textFill>
+                </Label>
+                <Pane HBox.hgrow="ALWAYS" />
+                <Label fx:id="label1" font="$x3" text="Right status" textFill="$x4" HBox.hgrow="NEVER" />
+            </children>
+            <padding>
+                <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+            </padding>
+        </HBox>
+    </children>
+</VBox>
