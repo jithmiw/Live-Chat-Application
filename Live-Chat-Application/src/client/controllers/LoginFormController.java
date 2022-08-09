@@ -70,7 +70,7 @@ public class LoginFormController {
         }
         try {
             initStreamConfiguration(name, ip, port);
-            Parent window = FXMLLoader.load(getClass().getResource("/client/views/ClientForm2.fxml"));
+            Parent window = FXMLLoader.load(getClass().getResource("/client/views/ClientForm.fxml"));
             Scene newScene = new Scene(window);
             Stage mainWindow = (Stage) ((Node) event.getSource()).getScene().getWindow();
             mainWindow.setTitle("Live-Chat");
