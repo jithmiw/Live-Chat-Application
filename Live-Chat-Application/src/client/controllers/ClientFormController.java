@@ -45,6 +45,8 @@ public class ClientFormController {
 
         initFields();
         new ChatClientThread(this);
+        ClientNotification("Establishing connection. Please wait...");
+        ClientNotification("Welcome " + name);
     }
 
     private void initFields() {
@@ -79,6 +81,10 @@ public class ClientFormController {
             }
         });
         Platform.runLater(() -> textField.requestFocus());
+    }
+
+    private void ClientNotification(String text) {
+        ApplicationContext.getMessageConfiguration().getClientNotification(listView, text);
     }
 
     public void pressedSend(ActionEvent event) {
