@@ -9,10 +9,6 @@ public class ChatServer {
     private Thread thread = null;
     private int clientCount = 0;
 
-    public static void main(String[] args) {
-        new ChatServer(5000);
-    }
-
     public ChatServer(int port) {
         try {
             System.out.println("Binding to port " + port + ", please wait...");
@@ -21,5 +17,41 @@ public class ChatServer {
         } catch (IOException e) {
             System.out.println("Cannot bind to port " + port + ": " + e.getMessage());
         }
+    }
+
+    public static void main(String[] args) {
+        new ChatServer(5000);
+    }
+
+    public ChatServerThread[] getClients() {
+        return clients;
+    }
+
+    public void setClients(ChatServerThread[] clients) {
+        this.clients = clients;
+    }
+
+    public ServerSocket getServer() {
+        return server;
+    }
+
+    public void setServer(ServerSocket server) {
+        this.server = server;
+    }
+
+    public Thread getThread() {
+        return thread;
+    }
+
+    public void setThread(Thread thread) {
+        this.thread = thread;
+    }
+
+    public int getClientCount() {
+        return clientCount;
+    }
+
+    public void setClientCount(int clientCount) {
+        this.clientCount = clientCount;
     }
 }
