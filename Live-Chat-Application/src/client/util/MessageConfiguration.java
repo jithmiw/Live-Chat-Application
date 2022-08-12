@@ -1,5 +1,6 @@
 package client.util;
 
+import client.ApplicationContext;
 import com.jfoenix.effects.JFXDepthManager;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
@@ -39,6 +40,11 @@ public class MessageConfiguration {
         hBox.getChildren().add(l1);
         listView.getItems().add(hBox);
         listView.scrollTo(listView.getItems().lastIndexOf(hBox));
+    }
+
+    public void getClientRespond(ListView<HBox> listView, String text) {
+        String name = ApplicationContext.getStreamConfiguration().getName();
+        createLabel(listView, name + ": " + text, Pos.TOP_RIGHT);
     }
 
     public void getServerRespond(ListView<HBox> listView, String text) {
