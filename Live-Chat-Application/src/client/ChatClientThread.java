@@ -13,4 +13,7 @@ public class ChatClientThread {
         this.client = client;
         streamIn = ApplicationContext.getStreamConfiguration().getStreamIn();
     }
+
+    public void run() {
+    }
 }
