@@ -1,8 +1,6 @@
 package server;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.net.Socket;
 
 public class ChatServerThread {
@@ -28,6 +26,11 @@ public class ChatServerThread {
         } catch (IOException e) {
             System.out.println(ID + " ERROR sending: " + e.getMessage());
         }
+    }
+
+    public void open() throws IOException {
+        streamIn = new DataInputStream(new BufferedInputStream(socket.getInputStream()));
+        streamOut = new DataOutputStream(new BufferedOutputStream(socket.getOutputStream()));
     }
 
     public String getClientName() {
