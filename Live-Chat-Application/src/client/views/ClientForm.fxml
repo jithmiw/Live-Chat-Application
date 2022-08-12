@@ -8,7 +8,6 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
@@ -19,7 +18,10 @@
     <children>
         <HBox fx:id="menuBar" minHeight="41.0" minWidth="900.0" prefHeight="41.0" prefWidth="900.0" styleClass="themeColor">
             <children>
-                <ImageView fx:id="logo" fitHeight="41.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true" />
+                <ImageView fx:id="logo" fitHeight="38.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                    <HBox.margin>
+                        <Insets bottom="3.0" left="3.0" top="3.0" />
+                    </HBox.margin></ImageView>
                 <Label fx:id="nameLabel" style="-fx-background-color: transparent;" styleClass="themeLabel" text="Name" textFill="WHITE">
                     <font>
                         <Font size="20.0" />
@@ -30,31 +32,37 @@
                 </Label>
             </children>
         </HBox>
-        <SplitPane fx:id="splitPane" dividerPositions="0.22160356347438753" focusTraversable="true" VBox.vgrow="ALWAYS">
+        <SplitPane fx:id="splitPane" focusTraversable="true" VBox.vgrow="ALWAYS">
             <items>
-                <AnchorPane>
-                    <children>
-                        <ListView fx:id="listViewStatus" prefHeight="509.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                    </children>
-                </AnchorPane>
                 <VBox prefHeight="200.0" prefWidth="100.0">
                     <children>
                         <ListView fx:id="listView" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
-                        <HBox minWidth="24.0" prefHeight="24.0" prefWidth="700.0">
+                        <HBox minWidth="24.0" prefHeight="55.0" prefWidth="695.0">
                             <children>
-                                <JFXTextField fx:id="textField" focusColor="WHITE" focusTraversable="false" promptText="Type a message" unFocusColor="BLACK" HBox.hgrow="ALWAYS">
+                                <JFXTextField fx:id="textField" focusColor="WHITE" focusTraversable="false" prefHeight="70.0" prefWidth="438.0" promptText="Type a message" unFocusColor="BLACK" HBox.hgrow="ALWAYS">
                                     <styleClass>
                                         <String fx:value="themeColor" />
                                         <String fx:value="themeLabel" />
                                     </styleClass>
                                     <font>
-                                        <Font size="17.0" />
+                                        <Font size="18.0" />
                                     </font>
+                                    <padding>
+                                        <Insets left="15.0" right="15.0" />
+                                    </padding>
                                 </JFXTextField>
-                                <JFXButton fx:id="buttonSend" buttonType="RAISED" onAction="#pressedSend" prefHeight="37.0" prefWidth="130.0" ripplerFill="#2c2b2b" styleClass="themeColor" text="Send" textFill="WHITE">
+                                <ImageView fx:id="imageSelect" fitHeight="50.0" fitWidth="50.0" onMouseClicked="#imgChooseOnAction" pickOnBounds="true" preserveRatio="true">
+                                    <HBox.margin>
+                                        <Insets bottom="7.0" left="10.0" right="10.0" top="7.0" />
+                                    </HBox.margin>
+                                </ImageView>
+                                <JFXButton fx:id="buttonSend" buttonType="RAISED" onAction="#pressedSend" prefHeight="50.0" prefWidth="130.0" ripplerFill="#2c2b2b" styleClass="themeColor" text="Send" textFill="#2a3942">
                                     <font>
                                         <Font name="System Bold" size="15.0" />
                                     </font>
+                                    <HBox.margin>
+                                        <Insets bottom="7.0" right="10.0" top="7.0" />
+                                    </HBox.margin>
                                 </JFXButton>
                             </children>
                         </HBox>
@@ -73,7 +81,6 @@
                     </textFill>
                 </Label>
                 <Pane HBox.hgrow="ALWAYS" />
-                <Label fx:id="label1" font="$x3" text="Right status" textFill="$x4" HBox.hgrow="NEVER" />
             </children>
             <padding>
                 <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
