@@ -83,6 +83,16 @@ public class ClientFormController {
     }
 
     public void pressedSend(ActionEvent event) {
+        if (textField.getText().startsWith("//")) {
+            //There is no command support yet.
+            ClientNotification("Unknown Command");
+        } else if (textField.getText() != null && !textField.getText().trim().isEmpty()) { //Prevent sending empty messages.
+            Send(textField.getText());
+        }
+        textField.clear();
+    }
+
+    private void Send(String message) {
     }
 
     public void imgChooseOnAction(MouseEvent event) {
