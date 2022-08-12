@@ -2,6 +2,7 @@ package server;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
+import java.io.IOException;
 import java.net.Socket;
 
 public class ChatServerThread {
@@ -18,6 +19,15 @@ public class ChatServerThread {
         this.server = server;
         this.socket = socket;
         ID = socket.getPort();
+    }
+
+    public void send(String msg) {
+        try {
+            streamOut.writeUTF(msg);
+            streamOut.flush();
+        } catch (IOException e) {
+            System.out.println(ID + " ERROR sending: " + e.getMessage());
+        }
     }
 
     public String getClientName() {
