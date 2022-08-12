@@ -14,8 +14,16 @@ public class ChatServer {
             System.out.println("Binding to port " + port + ", please wait...");
             server = new ServerSocket(port);
             System.out.println("Server started: " + server);
+            start();
         } catch (IOException e) {
             System.out.println("Cannot bind to port " + port + ": " + e.getMessage());
+        }
+    }
+
+    public void start() {
+        if (thread == null) {
+            thread = new Thread(this);
+            thread.start();
         }
     }
 
