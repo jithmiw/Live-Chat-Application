@@ -10,27 +10,27 @@
 
 .split-pane:horizontal > .split-pane-divider {
     -fx-padding: 0 0.10em 0 0.10em;
-    -fx-background-color: #075E54;
+    -fx-background-color: #2A3942;
 }
 
 .split-pane:horizontal {
-    -fx-border-color: #075E54;
-    -fx-background-color: #075E54;
+    -fx-border-color: #2A3942;
+    -fx-background-color: #2A3942;
     -fx-background-insets: 0;
     -fx-padding: 1px;
 }
 
 .themeColor {
-    -fx-background-color: #075E54;
+    -fx-background-color: #2A3942;
 }
 
 .themeLabel {
-    -fx-text-fill: white;
-    -fx-prompt-text-fill: white;
+    -fx-text-fill: #CCD3D7;
+    -fx-prompt-text-fill: #8696A0;
 }
 
 .button {
-    -fx-background-color: #202C33;
+    -fx-background-color: #8696A0;
     -fx-background-radius: 50px;
 }
 
