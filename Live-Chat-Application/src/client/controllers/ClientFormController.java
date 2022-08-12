@@ -14,6 +14,7 @@ import javafx.scene.control.SplitPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -24,21 +25,21 @@ import java.io.IOException;
 public class ClientFormController {
     public JFXButton buttonSend;
     public ListView<HBox> listView;
-    public ListView<HBox> listViewStatus;
     public JFXTextField textField;
-    public Label label1;
     public HBox menuBar;
     public Font x3;
     public Color x4;
     public SplitPane splitPane;
     public Label nameLabel;
     public ImageView logo;
+    public ImageView imageSelect;
 
     private String name;
     private DataOutputStream streamOut;
 
     public void initialize() {
         logo.setImage(new Image(Main.class.getResource("resources/img/messages.png").toString()));
+        imageSelect.setImage(new Image(Main.class.getResource("resources/img/camera.png").toString()));
         streamOut = ApplicationContext.getStreamConfiguration().getStreamOut();
         name = ApplicationContext.getStreamConfiguration().getName();
         nameLabel.setText(name);
@@ -72,12 +73,6 @@ public class ClientFormController {
                 buttonSend.fire();
             } else if (event.getCode() == KeyCode.BACK_SPACE) {
                 return;
-            } else {
-                try {
-                    streamOut.writeUTF("//typing");
-                } catch (IOException e) {
-                    new Alert(Alert.AlertType.ERROR, "An error occurred.").show();
-                }
             }
         });
         Platform.runLater(() -> textField.requestFocus());
@@ -88,5 +83,8 @@ public class ClientFormController {
     }
 
     public void pressedSend(ActionEvent event) {
+    }
+
+    public void imgChooseOnAction(MouseEvent event) {
     }
 }
