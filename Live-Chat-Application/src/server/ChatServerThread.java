@@ -33,6 +33,12 @@ public class ChatServerThread {
         streamOut = new DataOutputStream(new BufferedOutputStream(socket.getOutputStream()));
     }
 
+    public void close() throws IOException {
+        if (socket != null) socket.close();
+        if (streamIn != null) streamIn.close();
+        if (streamOut != null) streamOut.close();
+    }
+
     public String getClientName() {
         return clientName;
     }
