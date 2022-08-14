@@ -28,22 +28,6 @@ public class ChatServerThread {
         }
     }
 
-    public void run() {
-        System.out.println("Server Thread " + ID + " running.");
-        while (true) {
-            try {
-                if (!haveName) {
-                    setClientName(streamIn.readUTF());
-                    haveName = true;
-                    continue;
-                }
-                server.handle(ID, streamIn.readUTF());
-            } catch (IOException e) {
-                System.out.println(ID + " ERROR reading: " + e.getMessage());
-            }
-        }
-    }
-
     public void open() throws IOException {
         streamIn = new DataInputStream(new BufferedInputStream(socket.getInputStream()));
         streamOut = new DataOutputStream(new BufferedOutputStream(socket.getOutputStream()));

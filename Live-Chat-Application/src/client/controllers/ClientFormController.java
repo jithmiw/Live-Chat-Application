@@ -82,14 +82,6 @@ public class ClientFormController {
         ApplicationContext.getMessageConfiguration().getClientNotification(listView, text);
     }
 
-    public void handle(String msg) {
-        Platform.runLater(() -> ServerMessage(msg));
-    }
-
-    private void ServerMessage(String text) {
-        ApplicationContext.getMessageConfiguration().getServerRespond(listView, text);
-    }
-
     public void pressedSend(ActionEvent event) {
         if (textField.getText().startsWith("//")) {
             //There is no command support yet.
@@ -117,7 +109,6 @@ public class ClientFormController {
     }
 
     private void ClientMessage(String text) {
-        ApplicationContext.getMessageConfiguration().getClientRespond(listView, text);
     }
 
     public void imgChooseOnAction(MouseEvent event) {
