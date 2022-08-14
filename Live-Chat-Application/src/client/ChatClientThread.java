@@ -5,7 +5,7 @@ import client.controllers.ClientFormController;
 import java.io.DataInputStream;
 import java.net.SocketException;
 
-public class ChatClientThread {
+public class ChatClientThread extends Thread {
 
     private final ClientFormController client;
     private final DataInputStream streamIn;
@@ -13,6 +13,7 @@ public class ChatClientThread {
     public ChatClientThread(ClientFormController client) {
         this.client = client;
         streamIn = ApplicationContext.getStreamConfiguration().getStreamIn();
+        start();
     }
 
     public void run() {
