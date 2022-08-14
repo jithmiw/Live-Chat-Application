@@ -46,6 +46,15 @@ public class ChatServer {
         }
     }
 
+    public synchronized void handle(int ID, String input) {
+        for (int i = 0; i < clientCount; i++) {
+            if (clients[i].getID() == ID) {//This prevents the person's own message to show up again.
+                continue;
+            }
+            clients[i].send(input);
+        }
+    }
+
     private void addThread(Socket socket) {}
 
     public static void main(String[] args) {
