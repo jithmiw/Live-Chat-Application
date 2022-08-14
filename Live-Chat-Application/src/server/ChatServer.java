@@ -2,6 +2,7 @@ package server;
 
 import java.io.IOException;
 import java.net.ServerSocket;
+import java.net.Socket;
 
 public class ChatServer {
     private ChatServerThread[] clients = new ChatServerThread[50];
@@ -20,12 +21,32 @@ public class ChatServer {
         }
     }
 
+    public void run() {
+        while (thread != null) {
+            try {
+                System.out.println("Waiting for a client ...");
+                addThread(server.accept());
+            } catch (IOException ioe) {
+                System.out.println("Server accept error: " + ioe);
+                stop();
+            }
+        }
+    }
+
     public void start() {
         if (thread == null) {
             thread = new Thread(this);
             thread.start();
         }
     }
+
+    public void stop() {
+        if (thread != null) {
+            thread = null;
+        }
+    }
+
+    private void addThread(Socket socket) {}
 
     public static void main(String[] args) {
         new ChatServer(5000);
