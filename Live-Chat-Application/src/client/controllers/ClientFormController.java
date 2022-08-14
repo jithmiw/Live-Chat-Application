@@ -93,7 +93,22 @@ public class ClientFormController {
     }
 
     private void Send(String message) {
+        try {
+            streamOut.writeUTF(name + ": " + message);
+            streamOut.flush();
+            ClientMessage(message);
+        } catch (IOException e) {
+            ClientNotification("Sending error : " + e);
+            ApplicationContext.getStreamConfiguration().stopStream();
+            new Alert(Alert.AlertType.ERROR, "An error occurred.").show();
+        } catch (Exception e) {
+            ClientNotification("An error occurred. Please restart the client...");
+            ApplicationContext.getStreamConfiguration().stopStream();
+            new Alert(Alert.AlertType.ERROR, "An error occurred.").show();
+        }
     }
+
+    private void ClientMessage(String text) {}
 
     public void imgChooseOnAction(MouseEvent event) {
     }
