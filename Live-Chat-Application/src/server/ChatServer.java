@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class ChatServer {
+public class ChatServer implements Runnable {
     private ChatServerThread[] clients = new ChatServerThread[50];
     private ServerSocket server = null;
     private Thread thread = null;
@@ -19,6 +19,10 @@ public class ChatServer {
         } catch (IOException e) {
             System.out.println("Cannot bind to port " + port + ": " + e.getMessage());
         }
+    }
+
+    public static void main(String[] args) {
+        new ChatServer(5000);
     }
 
     public void run() {
@@ -55,10 +59,20 @@ public class ChatServer {
         }
     }
 
-    private void addThread(Socket socket) {}
-
-    public static void main(String[] args) {
-        new ChatServer(5000);
+    private void addThread(Socket socket) {
+        if (clientCount < clients.length) {
+            System.out.println("Client accepted: " + socket);
+            clients[clientCount] = new ChatServerThread(this, socket);
+            try {
+                clients[clientCount].open();
+                clients[clientCount].start();
+                clientCount++;
+            } catch (IOException e) {
+                System.out.println("Error opening thread: " + e);
+            }
+        } else {
+            System.out.println("Client refused: maximum " + clients.length + " reached.");
+        }
     }
 
     public ChatServerThread[] getClients() {
