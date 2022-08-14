@@ -3,7 +3,7 @@ package server;
 import java.io.*;
 import java.net.Socket;
 
-public class ChatServerThread {
+public class ChatServerThread extends Thread {
     private ChatServer server = null;
     private Socket socket = null;
     private int ID = -1;
@@ -47,12 +47,6 @@ public class ChatServerThread {
     public void open() throws IOException {
         streamIn = new DataInputStream(new BufferedInputStream(socket.getInputStream()));
         streamOut = new DataOutputStream(new BufferedOutputStream(socket.getOutputStream()));
-    }
-
-    public void close() throws IOException {
-        if (socket != null) socket.close();
-        if (streamIn != null) streamIn.close();
-        if (streamOut != null) streamOut.close();
     }
 
     public String getClientName() {
