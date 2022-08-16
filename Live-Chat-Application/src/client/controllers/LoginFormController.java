@@ -73,6 +73,7 @@ public class LoginFormController {
             Parent window = FXMLLoader.load(getClass().getResource("/client/views/ClientForm.fxml"));
             Scene newScene = new Scene(window);
             Stage mainWindow = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            mainWindow.setResizable(true);
             mainWindow.setTitle("Live-Chat");
             mainWindow.setScene(newScene);
             mainWindow.setMaximized(true);
