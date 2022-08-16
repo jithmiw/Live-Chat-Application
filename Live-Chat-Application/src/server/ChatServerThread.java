@@ -25,6 +25,11 @@ public class ChatServerThread extends Thread {
             streamOut.flush();
         } catch (IOException e) {
             System.out.println(ID + " ERROR sending: " + e.getMessage());
+            try {
+                close();
+            } catch (IOException exception) {
+                exception.printStackTrace();
+            }
         }
     }
 
@@ -40,6 +45,11 @@ public class ChatServerThread extends Thread {
                 server.handle(ID, streamIn.readUTF());
             } catch (IOException e) {
                 System.out.println(ID + " ERROR reading: " + e.getMessage());
+                try {
+                    close();
+                } catch (IOException exception) {
+                    exception.printStackTrace();
+                }
             }
         }
     }
@@ -47,6 +57,12 @@ public class ChatServerThread extends Thread {
     public void open() throws IOException {
         streamIn = new DataInputStream(new BufferedInputStream(socket.getInputStream()));
         streamOut = new DataOutputStream(new BufferedOutputStream(socket.getOutputStream()));
+    }
+
+    public void close() throws IOException {
+        if (socket != null) socket.close();
+        if (streamIn != null) streamIn.close();
+        if (streamOut != null) streamOut.close();
     }
 
     public String getClientName() {
