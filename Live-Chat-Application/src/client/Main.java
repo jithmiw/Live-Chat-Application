@@ -17,6 +17,7 @@ public class Main extends Application {
         Scene mainScene = new Scene(root);
         primaryStage.setScene(mainScene);
         primaryStage.setTitle("Live-Chat");
+        primaryStage.setResizable(false);
         primaryStage.centerOnScreen();
         primaryStage.show();
     }
