@@ -37,7 +37,7 @@
                 <VBox prefHeight="200.0" prefWidth="100.0">
                     <children>
                         <ListView fx:id="listView" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
-                        <HBox prefHeight="50.0" prefWidth="896.0">
+                        <HBox fx:id="emojiRow" prefHeight="50.0" prefWidth="896.0">
                             <children>
                                 <Label fx:id="lbl1" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#emojiOnAction" prefHeight="40.0" prefWidth="40.0" styleClass="emoji-label" text="Label">
                                     <HBox.margin>
@@ -183,6 +183,11 @@
                         </HBox>
                         <HBox minWidth="24.0" prefHeight="55.0" prefWidth="695.0">
                             <children>
+                                <ImageView fx:id="btnEmojiRow" fitHeight="50.0" fitWidth="50.0" onMouseClicked="#emojiRowOnAction" pickOnBounds="true" preserveRatio="true">
+                                    <HBox.margin>
+                                        <Insets bottom="7.0" left="10.0" right="10.0" top="7.0" />
+                                    </HBox.margin>
+                                </ImageView>
                                 <JFXTextField fx:id="textField" focusColor="WHITE" focusTraversable="false" prefHeight="70.0" prefWidth="438.0" promptText="Type a message" unFocusColor="BLACK" HBox.hgrow="ALWAYS">
                                     <styleClass>
                                         <String fx:value="themeColor" />
@@ -191,9 +196,6 @@
                                     <font>
                                         <Font size="18.0" />
                                     </font>
-                                    <padding>
-                                        <Insets left="15.0" right="15.0" />
-                                    </padding>
                                 </JFXTextField>
                                 <ImageView fx:id="imageSelect" fitHeight="50.0" fitWidth="50.0" onMouseClicked="#imgChooseOnAction" pickOnBounds="true" preserveRatio="true">
                                     <HBox.margin>
