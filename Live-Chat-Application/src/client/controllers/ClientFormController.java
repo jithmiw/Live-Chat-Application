@@ -34,9 +34,11 @@ public class ClientFormController {
     public Font x3;
     public Color x4;
     public SplitPane splitPane;
+    public HBox emojiRow;
     public Label nameLabel;
     public ImageView logo;
     public ImageView imageSelect;
+    public ImageView btnEmojiRow;
     public Label lbl1, lbl2, lbl3, lbl4, lbl5, lbl6, lbl7, lbl8, lbl9, lbl10, lbl11, lbl12, lbl13, lbl14, lbl15,
             lbl16, lbl17, lbl18, lbl19, lbl20, lbl21, lbl22, lbl23, lbl24, lbl25, lbl26, lbl27, lbl28;
 
@@ -46,11 +48,13 @@ public class ClientFormController {
 
     public void initialize() {
         logo.setImage(new Image(Main.class.getResource("resources/img/messages.png").toString()));
+        btnEmojiRow.setImage(new Image(Main.class.getResource("resources/img/emoji.png").toString()));
         imageSelect.setImage(new Image(Main.class.getResource("resources/img/camera.png").toString()));
         streamOut = ApplicationContext.getStreamConfiguration().getStreamOut();
         name = ApplicationContext.getStreamConfiguration().getName();
         nameLabel.setText(name);
-
+        emojiRow.setVisible(false);
+        emojiRow.setManaged(false);
         initFields();
         initEmojis();
         new ChatClientThread(this);
@@ -116,7 +120,7 @@ public class ClientFormController {
 
     private void Send(String message) {
         try {
-            streamOut.writeUTF(name + ": " + message);
+            streamOut.writeUTF(name + ":- " + message);
             streamOut.flush();
             ClientMessage(message);
         } catch (IOException e) {
@@ -143,6 +147,17 @@ public class ClientFormController {
     public void imgChooseOnAction(MouseEvent event) {
         File file = fileChooser.showOpenDialog(stage);
         if (file != null) {
+            Send(file.getPath());
+        }
+    }
+
+    public void emojiRowOnAction(MouseEvent event) {
+        if (emojiRow.isVisible()) {
+            emojiRow.setVisible(false);
+            emojiRow.setManaged(false);
+        } else {
+            emojiRow.setVisible(true);
+            emojiRow.setManaged(true);
         }
     }
 }
