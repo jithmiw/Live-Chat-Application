@@ -18,6 +18,10 @@
 - Understand and work with Client-Server architecture.
 - Handle software development using sockets to communicate between two or more computers.
 
+## 📌Application Architecture
+
+![img.png](Resources/Application architecture.png)
+
 ## Built with
 
 - Java 
